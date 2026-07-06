@@ -168,7 +168,7 @@ OpenRouter free API key (sign up)
 1. Clone the Repository
 
 bash
-git clone https://github.com/YOUR_USERNAME/ai-resume-analyzer.git
+git clone https://github.com/lakshmi335/ai-resume-analyzer.git
 cd ai-resume-analyzer
 2. Set Up the Backend
 
