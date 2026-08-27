@@ -102,64 +102,7 @@ Text Summarization	Concise feedback generation
 NLG	Resume builder + interview questions
 Conversational AI	Multi-turn interview with context
 ASR / TTS	Browser-native voice I/O
-📁 Project Structure
 
-ai-resume-analyzer/
-├── client/                          # React Frontend
-│   ├── public/
-│   │   └── index.html
-│   └── src/
-│       ├── api/
-│       │   ├── axios.js             # Axios instance + JWT interceptor
-│       │   └── requests.js          # authAPI, resumeAPI, interviewAPI
-│       ├── components/
-│       │   ├── Navbar.js            # Navigation bar
-│       │   ├── Spinner.js           # Loading indicator
-│       │   ├── FileUpload.js        # Drag-and-drop PDF uploader
-│       │   ├── ResultCard.js        # Resume analysis display
-│       │   └── JobRoles.js          # Suitable roles component
-│       ├── context/
-│       │   └── AuthContext.js       # JWT state management
-│       ├── pages/
-│       │   ├── AuthPage.js          # Login + Register
-│       │   ├── Dashboard.js         # Home with sliders
-│       │   ├── UploadPage.js        # Analyze + Build resume
-│       │   ├── InterviewPage.js     # Mock interview + analysis
-│       │   ├── ComparePage.js       # Resume comparison
-│       │   └── ResumeDetail.js      # View saved analysis
-│       ├── App.js                   # Routes + AuthProvider
-│       ├── index.js                 # React entry point
-│       └── index.css                # Global dark theme styles
-│
-├── server/                          # Node.js Backend
-│   ├── config/
-│   │   └── db.js                    # MongoDB connection
-│   ├── controllers/
-│   │   ├── authController.js        # Register, login, profile
-│   │   ├── resumeController.js      # Upload, analyze, compare, build
-│   │   └── interviewController.js   # Start, chat, end, feedback
-│   ├── middleware/
-│   │   ├── authMiddleware.js        # JWT protect middleware
-│   │   └── errorHandler.js          # Global error handler
-│   ├── models/
-│   │   ├── User.js                  # User schema (bcrypt)
-│   │   ├── Resume.js                # Resume + analysis schema
-│   │   └── Interview.js             # Interview messages + feedback
-│   ├── routes/
-│   │   ├── authRoutes.js            # /api/auth/*
-│   │   ├── resumeRoutes.js          # /api/resume/*
-│   │   └── interviewRoutes.js       # /api/interview/*
-│   ├── utils/
-│   │   ├── aiHelper.js              # OpenRouter API wrapper
-│   │   ├── pdfParser.js             # PDF text extraction
-│   │   └── promptTemplates.js       # All AI prompt builders
-│   ├── server.js                    # Express entry point
-│   ├── package.json
-│   └── .env.example                 # Environment variable template
-│
-├── .gitignore
-└── README.md
-🚀 Getting Started
 Prerequisites
 Node.js v18+ (download)
 Git (download)
