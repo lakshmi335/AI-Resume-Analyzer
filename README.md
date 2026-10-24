@@ -1,220 +1,227 @@
- AI Resume Analyzer
-Smart Resume Analysis · Job Role Matching · Voice-Powered Mock Interviews
+# AI Resume Analyzer & Career OS
 
-I built an AI-powered Resume Analyzer — a full-stack MERN application where users upload their resume to receive ATS scoring, keyword analysis, and AI-recommended job roles. It also includes a voice-enabled mock interview feature where an AI interviewer conducts real conversations, followed by a detailed performance report with skill scores and improvement suggestions. The project uses React, Node.js, MongoDB, JWT authentication, and integrates a Large Language Model via OpenRouter API with custom prompt engineering.
+**Smart Resume Analysis · Job Role Matching · Voice-Powered Mock Interviews**
 
-A full-stack AI-powered platform that analyzes resumes, recommends suitable job roles, and conducts voice-enabled mock interviews — giving job seekers a complete preparation toolkit.
+A full-stack MERN application where users upload a resume and get an ATS score, section-by-section feedback, keyword gap analysis and AI-recommended job roles. It also includes an AI mock interviewer with voice input, voice output and camera monitoring, followed by a detailed performance report.
 
-Features · Demo · Setup · Tech Stack · API · Contributing
+[Features](#-features) · [Tech Stack](#-tech-stack) · [Setup](#-setup) · [API](#-api-reference) · [How It Works](#-how-it-works) · [Security](#-security) · [Limitations](#-known-limitations)
 
-</div>
-📌 Project Overview
+---
+
+## 📌 Project Overview
+
 Most job seekers face three problems:
 
-Resume Quality — No idea if their resume will pass ATS (Applicant Tracking System) screening
-Role Confusion — Unsure which job roles match their actual skills
-Interview Fear — No realistic practice before the real interview
-AI Resume Analyzer solves all three in one platform:
+1. **Resume quality**: no idea whether their resume will pass ATS (Applicant Tracking System) screening
+2. **Role confusion**: unsure which job roles match their actual skills
+3. **Interview fear**: no realistic practice before the real interview
 
-Upload your resume → get AI-powered ATS scoring, section-by-section feedback, keyword analysis, and 5 suitable job roles ranked by match percentage
-Practice mock interviews with an AI interviewer using voice input and output
-Receive a detailed performance report with grades, skill scores, and improvement suggestions
-Build a tailored resume from any job description in seconds
-✨ Features
-📄 Resume Analysis
-Upload PDF resume (drag & drop or click)
-AI extracts and analyzes text automatically
-Overall Score and ATS Compatibility Score (0–100)
-Section-by-section feedback: Contact, Summary, Experience, Education, Skills
-Strengths, weaknesses, and actionable suggestions
-Keyword matching against job description (matched vs. missing)
-Format and layout feedback
-Radar chart visualization of section scores
-🎯 Suitable Job Role Recommendations
-AI recommends 5 roles based on actual resume content
-Each role shows: match %, experience level (Junior/Mid/Senior), salary range, required skills, reason for recommendation
-One-click "Find Jobs on LinkedIn" button per role
-🎤 Voice-Enabled Mock Interview
-Choose job role, difficulty (Easy / Medium / Hard), and optional resume context
-AI acts as a professional interviewer — asks relevant questions one at a time
-Voice input: speak your answers using browser Speech-to-Text
-Voice output: AI reads questions aloud using Text-to-Speech
-Replay any question, toggle voice on/off
-Full conversation history preserved
-📊 Interview Performance Analysis
-After the interview ends, get a complete report:
+AI Resume Analyzer & Career OS addresses all three in one platform:
 
-Letter grade (A+ to D) + overall score
-Four skill scores: Communication, Technical Knowledge, Problem Solving, Confidence
-Radar chart + horizontal bar chart
-Q&A Review: every question scored individually with feedback
-Hireability assessment (Likely Hireable / Needs More Preparation)
-Priority improvements, next steps, recommended resources
-Full interview transcript
-🤖 AI Resume Builder
-Paste any job description
-Add your name, skills, experience, education (all optional)
-AI writes a complete ATS-optimized resume tailored to the role
-Copy to clipboard or download as .txt
-⚖️ Resume Comparison
-Compare two resumes side-by-side
-AI scores both and picks the stronger one
-Explains strengths and weaknesses of each
-📱 Dashboard
-Stats: total resumes analyzed, interviews completed, average score
-Horizontal slider to browse through recent resumes and interviews
-Quick action cards for all features
-🛠 Tech Stack
-Frontend
-Technology	Purpose
-React 18	Component-based UI
-React Router v6	Client-side navigation
-Axios	HTTP API calls with JWT interceptor
-Recharts	Radar and bar charts for scores
-React Dropzone	Drag-and-drop PDF upload
-Lucide React	Icon library
-Web Speech API	Browser-native speech-to-text (free)
-SpeechSynthesis API	Browser-native text-to-speech (free)
-Context API	Global authentication state
-Plain CSS	Custom dark theme (no CSS framework)
-Backend
-Technology	Purpose
-Node.js	JavaScript runtime
-Express.js	Web framework and routing
-MongoDB Atlas	Cloud NoSQL database
-Mongoose	MongoDB ODM
-JWT	Stateless authentication tokens
-bcryptjs	Password hashing
-Multer	In-memory file upload handling
-pdf-parse	PDF text extraction
-OpenRouter API	AI model access (free tier)
-Helmet	HTTP security headers
-CORS	Cross-origin request handling
-express-rate-limit	API rate limiting
-AI / NLP
-Technique	Usage
-Prompt Engineering	Structured JSON responses from LLM
-Text Extraction	PDF → plain text via pdf-parse
-Keyword Extraction	Resume vs. job description matching
-Text Classification	Section-wise resume scoring
-Semantic Similarity	Resume-to-job-description relevance
-Text Summarization	Concise feedback generation
-NLG	Resume builder + interview questions
-Conversational AI	Multi-turn interview with context
-ASR / TTS	Browser-native voice I/O
+- Upload a resume and get an AI-powered ATS score, section feedback, keyword analysis and suggested job roles
+- Practice mock interviews with an AI interviewer using voice or text
+- Receive a performance report with scores, charts and improvement suggestions
 
-Prerequisites
-Node.js v18+ (download)
-Git (download)
-MongoDB Atlas free account (sign up)
-OpenRouter free API key (sign up)
-1. Clone the Repository
+## ✨ Features
 
-bash
+### 📄 Resume Analysis
+- Upload PDF, DOCX or TXT resumes (drag and drop or browse) with type, size and empty-file validation
+- Overall ATS score plus six category scores: ATS compatibility, keyword match, skills match, experience relevance, formatting and content quality
+- Pass / warning / fail score checklist and a category bar chart
+- Section-by-section analysis (contact, summary, education, skills, experience, projects, certifications, achievements) with issues and suggestions
+- Strengths, weaknesses and prioritised recommendations (critical, high, medium, optional)
+- Keyword analysis with matching, missing and recommended keywords, plus technical and soft skill extraction
+
+### 🎯 Job Description Matching
+- Paste a job title and description to get an overall match percentage
+- Matching vs. missing keywords for that specific role
+
+### 💼 Recommended Job Roles
+- AI suggests 3 to 5 roles that fit the candidate's actual skills and experience level
+- One-click search links for each role on **LinkedIn, Naukri, Internshala and Unstop**
+
+### ✍️ Resume Writing Tools
+- **Bullet point improver**: before and after rewrite with copy and regenerate
+- **Professional summary generator** from the resume and an optional target role or job description
+- **Resume comparison**: two resumes scored side by side, with a winner and the reasoning
+
+### 🎤 Mock Interview
+- Choose job role, difficulty (easy, medium, hard), job description and an optional resume for personalised questions
+- AI interviewer asks one question at a time and adapts to your answers
+- **Voice input**: dictate answers with the browser Speech-to-Text API
+- **Voice output**: questions read aloud with Text-to-Speech (toggle on or off)
+- **Camera monitoring** with on-device **multi-person detection** (TensorFlow.js BlazeFace) and a warning when more than one person is in frame
+
+### 📊 Interview Performance Report
+- Overall score plus Communication, Technical Knowledge, Problem Solving and Confidence scores
+- Radar chart and bar chart
+- Hireability assessment, strengths and improvement areas
+- Question-by-question review with individual scores and feedback
+- Recommended resources, next steps and the full transcript
+- Reports are saved to MongoDB and can be reopened at any time
+
+### 🧭 Dashboard and Account
+- Public landing page for new visitors
+- Register, login, **forgot password / reset password** and profile update
+- Dashboard with stats, ATS score history chart and recent activity
+- Career insights built from your analysed resumes and interviews
+- **Light and dark theme** toggle, responsive layout and a slide-out navigation menu
+
+## 🛠 Tech Stack
+
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React 18 (Create React App) | Component-based UI |
+| React Router v6 | Client-side routing and protected routes |
+| Axios | API calls with JWT interceptor |
+| Recharts | Bar and radar charts |
+| Lucide React | Icons |
+| Web Speech API | Browser-native speech-to-text |
+| SpeechSynthesis API | Browser-native text-to-speech |
+| TensorFlow.js + BlazeFace | On-device face detection for multi-person warning |
+| Context API | Authentication and theme state |
+| Plain CSS | Custom design system with CSS variables |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js + Express.js | Server and REST API |
+| MongoDB + Mongoose | Database and ODM |
+| JWT | Stateless authentication |
+| bcryptjs | Password hashing |
+| Multer | File upload handling |
+| pdf-parse, mammoth | PDF and DOCX text extraction |
+| Nodemailer | Password reset emails (optional) |
+| Google Gemini API | LLM for analysis, interview and feedback |
+
+### AI / NLP
+| Technique | Usage |
+|---|---|
+| Prompt engineering | Structured JSON responses from the LLM |
+| Robust JSON parsing | `parseAIJson()` recovers from markdown fences, extra text and trailing commas |
+| Text extraction | PDF, DOCX and TXT to plain text |
+| Keyword extraction and matching | Resume vs. job description (LLM-based) |
+| Section-wise scoring | 0 to 100 scores per section and category |
+| Natural language generation | Bullet rewrites, summaries, interview questions |
+| Conversational AI | Multi-turn interview with the full history sent each turn |
+| ASR / TTS | Browser-native voice input and output |
+| Computer vision | BlazeFace face detection running in the browser |
+
+> The project uses **pre-trained models** (Google Gemini for language tasks, BlazeFace for face detection). No model is trained from scratch.
+
+## 🚀 Setup
+
+### Prerequisites
+- [Node.js](https://nodejs.org) v18 or newer
+- [Git](https://git-scm.com)
+- MongoDB (local install or a free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster)
+- A Google Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+### 1. Clone the repository
+```bash
 git clone https://github.com/lakshmi335/ai-resume-analyzer.git
 cd ai-resume-analyzer
-2. Set Up the Backend
+```
 
-bash
+### 2. Backend
+```bash
 cd server
 npm install
-Create your .env file:
+```
 
+Create your `.env` file (`cp .env.example .env` on macOS/Linux, `copy .env.example .env` on Windows) and fill in the values:
 
-bash
-cp .env.example .env
-Edit .env with your values:
-
-
-env
+```env
 PORT=5000
-NODE_ENV=development
-
-# MongoDB Atlas connection string
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/ai-resume-analyzer
-
-# JWT - use any long random string
-JWT_SECRET=your_super_secret_jwt_key_minimum_32_characters
+MONGO_URI=mongodb://127.0.0.1:27017/ai-resume-analyzer
+JWT_SECRET=replace_with_a_long_random_secret
 JWT_EXPIRES_IN=7d
-
-# OpenRouter API key (free tier available)
-OPENROUTER_API_KEY=sk-or-v1-your-key-here
-
-# Frontend URL
+GEMINI_API_KEY=your_google_gemini_api_key
+GEMINI_MODEL=gemini-3.6-flash
 CLIENT_URL=http://localhost:3000
-Start the backend:
+MAX_FILE_SIZE_MB=5
 
+# Optional: real password-reset emails
+EMAIL_HOST=
+EMAIL_PORT=587
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_FROM=noreply@aicareeros.com
+```
 
-bash
+Start the server:
+```bash
 npm run dev
-You should see:
+```
+You should see `MongoDB connected` and `Server running on port 5000`.
 
-
-Server running on port 5000 in development mode
-MongoDB connected: cluster.mongodb.net
-3. Set Up the Frontend
+### 3. Frontend
 Open a new terminal:
-
-
-bash
+```bash
 cd client
 npm install
 npm start
-The app opens at http://localhost:3000
+```
+Optionally create `client/.env` with `REACT_APP_API_URL=http://localhost:5000/api`. The app opens at http://localhost:3000.
 
-🔑 Environment Variables
-Variable	Required	Description
-PORT	Yes	Server port (default: 5000)
-NODE_ENV	Yes	development or production
-MONGODB_URI	Yes	MongoDB Atlas connection string
-JWT_SECRET	Yes	Secret key for JWT signing (min 32 chars)
-JWT_EXPIRES_IN	No	Token expiry (default: 7d)
-OPENROUTER_API_KEY	Yes	Free API key from openrouter.ai
-CLIENT_URL	Yes	Frontend URL for CORS
-📡 API Reference
-Authentication
-Method	Endpoint	Description	Auth
-POST	/api/auth/register	Register new user	No
-POST	/api/auth/login	Login user	No
-GET	/api/auth/me	Get current user	Yes
-PUT	/api/auth/profile	Update profile	Yes
-Resume
-Method	Endpoint	Description	Auth
-POST	/api/resume/upload	Upload + analyze PDF	Yes
-GET	/api/resume	Get all user resumes	Yes
-GET	/api/resume/:id	Get single resume	Yes
-DELETE	/api/resume/:id	Delete resume	Yes
-POST	/api/resume/compare	Compare two resumes	Yes
-POST	/api/resume/build	Build resume from JD	Yes
-Interview
-Method	Endpoint	Description	Auth
-POST	/api/interview/start	Start new interview	Yes
-POST	/api/interview/:id/message	Send answer	Yes
-POST	/api/interview/:id/end	End + get feedback	Yes
-GET	/api/interview	Get all interviews	Yes
-GET	/api/interview/:id	Get single interview	Yes
-Request Examples
-Login:
+## 🔑 Environment Variables
 
+| Variable | Required | Description |
+|---|---|---|
+| `PORT` | No | Server port (default 5000) |
+| `MONGO_URI` | Yes | MongoDB connection string |
+| `JWT_SECRET` | Yes | Secret used to sign JWTs |
+| `JWT_EXPIRES_IN` | No | Token expiry (default 7d) |
+| `GEMINI_API_KEY` | Yes | Google Gemini API key |
+| `GEMINI_MODEL` | No | Gemini model name. Google retires model names over time, so update this if you see a 404 |
+| `CLIENT_URL` | Yes | Frontend URL for CORS and reset links |
+| `MAX_FILE_SIZE_MB` | No | Upload size limit (default 5) |
+| `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`, `EMAIL_FROM` | No | SMTP settings. If empty, reset links are printed to the server console |
 
-json
+## 📡 API Reference
+
+All error responses use `{ "error": "message" }`.
+
+### Authentication
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/auth/register` | Register a new user | No |
+| POST | `/api/auth/login` | Log in | No |
+| POST | `/api/auth/forgot-password` | Request a password reset link | No |
+| POST | `/api/auth/reset-password/:token` | Set a new password | No |
+| GET | `/api/auth/me` | Get the current user | Yes |
+| PUT | `/api/auth/profile` | Update name, target role or password | Yes |
+
+### Resume
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/resume/upload` | Upload a resume (`multipart/form-data`, field `resume`) | Yes |
+| GET | `/api/resume` | List your resumes | Yes |
+| GET | `/api/resume/:id` | Get one resume with its analysis | Yes |
+| DELETE | `/api/resume/:id` | Delete a resume | Yes |
+| POST | `/api/resume/:id/analyze` | Run AI analysis (`jobTitle` and `jobDescription` optional) | Yes |
+| POST | `/api/resume/:id/bullet-improve` | Improve a bullet point | Yes |
+| POST | `/api/resume/:id/generate-summary` | Generate a professional summary | Yes |
+| POST | `/api/resume/compare` | Compare two resumes | Yes |
+
+### Interview
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/interview/start` | Start an interview | Yes |
+| POST | `/api/interview/:id/message` | Send an answer and get the next question | Yes |
+| POST | `/api/interview/:id/end` | End the interview and generate the report | Yes |
+| GET | `/api/interview` | List your interviews | Yes |
+| GET | `/api/interview/:id` | Get one interview with its report | Yes |
+
+### Request examples
+
+```json
 POST /api/auth/login
-{
-  "email": "jane@example.com",
-  "password": "yourpassword"
-}
-Upload Resume:
+{ "email": "jane@example.com", "password": "yourpassword" }
+```
 
-
-POST /api/resume/upload
-Content-Type: multipart/form-data
-
-resume: [PDF file]
-jobDescription: "Optional job description text"
-Start Interview:
-
-
-json
+```json
 POST /api/interview/start
 {
   "jobRole": "Frontend Developer",
@@ -222,109 +229,101 @@ POST /api/interview/start
   "resumeId": "optional-resume-id",
   "jobDescription": "optional job description"
 }
-🔄 How It Works
-Resume Analysis Flow
+```
 
-User uploads PDF
-      ↓
-Multer receives file in memory (never saved to disk)
-      ↓
-pdf-parse extracts raw text
-      ↓
-cleanResumeText() normalizes whitespace/formatting
-      ↓
-promptTemplates.getResumeAnalysisPrompt() builds AI instruction
-      ↓
-aiHelper.callAI() sends to OpenRouter → Gemma model
-      ↓
-AI returns structured JSON (scores, roles, keywords, feedback)
-      ↓
-parseAIJson() safely parses the response
-      ↓
-Saved to MongoDB → returned to frontend
-      ↓
-ResultCard.js renders charts + suitable roles
-Interview Flow
+## 🔄 How It Works
 
-User sets up interview (role + difficulty)
-      ↓
-System prompt built → AI starts as interviewer
-      ↓
-[Loop] User answers → full conversation resent to AI → next question
-      ↓
-AI maintains context because full history is sent every turn
-      ↓
-User ends interview → transcript sent to AI for evaluation
-      ↓
-AI returns JSON feedback (scores, Q&A review, improvements)
-      ↓
-Performance report rendered with charts and tabs
-🔒 Security
-Passwords hashed with bcrypt (salt rounds: 12)
-JWT tokens for stateless authentication — verified on every protected route
-PDFs processed in memory — never written to disk
-Rate limiting: 100 requests per 15 minutes per IP
-Helmet sets secure HTTP headers
-CORS configured to only allow the frontend origin
-AI API keys stored server-side in .env — never exposed to the browser
-🧠 NLP Techniques Used
-This project uses a pre-trained Large Language Model (Google Gemma via OpenRouter) with carefully engineered prompts to perform NLP tasks:
+### Resume analysis flow
+```
+User uploads PDF / DOCX / TXT
+        ↓
+Multer validates type and size, saves the file to server/uploads
+        ↓
+pdf-parse / mammoth extracts the text, which is stored in MongoDB
+        ↓
+Prompt template builds the analysis instruction
+        ↓
+aiHelper sends it to Gemini (retries once if the model is overloaded)
+        ↓
+parseAIJson() safely parses the response and falls back to defaults if needed
+        ↓
+Result is saved to MongoDB and returned to the React app
+        ↓
+Report page renders scores, checklist, charts, keywords and job roles
+```
 
-NLP Technique	Implementation
-Text Extraction	pdf-parse library extracts unstructured PDF text
-Text Normalization	Regex-based cleaning of whitespace/line breaks
-Prompt Engineering	Structured JSON prompts guide the LLM reliably
-Keyword Extraction	Resume vs. job description keyword matching
-Text Classification	Section-wise resume scoring (0–100 per section)
-Semantic Similarity	Resume-to-job-description relevance matching
-Text Summarization	Concise AI feedback from long resume content
-NLG	Resume builder generates tailored professional content
-Conversational AI	Multi-turn interview with full context history
-ASR / TTS	Browser-native Web Speech + SpeechSynthesis APIs
-⚠️ Known Limitations
-Voice input (Speech-to-Text) works best in Chrome and Edge browsers
-AI responses depend on OpenRouter's free tier — may be slower during peak times
-PDF parsing works best with text-based PDFs; image-only/scanned PDFs may not extract well
-Free OpenRouter models have token limits — very long resumes may be truncated
-🔮 Future Improvements
- Export analysis as downloadable PDF report
- Email notifications for results and reminders
- Multi-language resume and interview support
- Resume version history and score tracking over time
- Live job board integration (pull real job postings)
- Webcam-based interview with body language analysis
- Fine-tuned model specifically for resume scoring
- Admin analytics dashboard (anonymized usage trends)
- Mobile app (React Native)
-🤝 Contributing
-Contributions are welcome!
+### Interview flow
+```
+User sets up the interview (role, difficulty, optional resume and JD)
+        ↓
+AI starts as the interviewer and asks the first question
+        ↓
+[Loop] User answers (typed or dictated) → full history resent → next question
+        ↓
+User ends the interview → transcript sent for evaluation
+        ↓
+AI returns JSON feedback → scores are clamped to 0–100 and saved to MongoDB
+        ↓
+Report renders with radar chart, bar chart, Q&A review and transcript
+```
 
+## 🔒 Security
 
-bash
+- Passwords hashed with bcrypt; password field is never returned by default
+- JWT authentication verified on every protected route
+- Every resume and interview query is scoped to the logged-in user, so one user cannot read another's data by guessing an ID
+- MongoDB ObjectId validation on all ID parameters
+- Uploads validated by type and size before parsing
+- Password reset tokens are stored hashed (SHA-256), expire after 1 hour, and the forgot-password response never reveals whether an email exists
+- The Gemini API key lives only in the server `.env` and is never sent to the browser
+- Central error handler returns clean messages and never exposes stack traces
+
+## ⚠️ Known Limitations
+
+- Voice dictation works best in Chrome and Edge; Firefox and Safari do not support it, and the mic button is disabled there
+- Multi-person detection downloads its model from a CDN the first time the camera is used, so it needs an internet connection. If it fails to load, the camera preview still works without the warning
+- Image-only (scanned) PDFs may not extract text
+- AI responses depend on the Gemini API. Model names get retired and the service can return 503 during peak demand
+- No automated test suite yet
+- Rate limiting and security headers (Helmet) are not added yet
+
+## 🔮 Future Improvements
+
+- Export the analysis as a downloadable PDF report
+- AI resume builder that writes a tailored resume from a job description
+- Resume version history and score tracking over time
+- Live job board integration (pull real postings instead of search links)
+- Rate limiting and Helmet security headers
+- Multi-language resume and interview support
+- Automated tests (Jest and Supertest)
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+```bash
 # 1. Fork the repository
 # 2. Create a feature branch
 git checkout -b feature/your-feature-name
 
-# 3. Make your changes and commit
+# 3. Commit your changes
 git commit -m "Add: your feature description"
 
-# 4. Push to your fork
+# 4. Push and open a Pull Request
 git push origin feature/your-feature-name
+```
 
-# 5. Open a Pull Request
-Please make sure your code follows the existing style and all features work before submitting a PR.
+## 📄 License
 
-📄 License
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-👩‍💻 Author
-DhanaLakshmi B.Tech Data Science — Aditya University
+## 👩‍💻 Author
 
-GitHub: Lakshmi335
-LinkedIn: https://www.linkedin.com/in/dhanalakshmi-kolipakula-32998231b/
-<div align="center">
+**DhanaLakshmi**, B.Tech Data Science, Aditya University
+
+- GitHub: [Lakshmi335](https://github.com/Lakshmi335)
+- LinkedIn: [dhanalakshmi-kolipakula](https://www.linkedin.com/in/dhanalakshmi-kolipakula-32998231b/)
+
 ⭐ If this project helped you, please give it a star!
 
-Built with passion using React, Node.js, MongoDB, and AI
-
-</div>
+Built with React, Node.js, MongoDB and AI.
